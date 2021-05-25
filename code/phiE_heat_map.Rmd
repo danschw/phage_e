@@ -24,7 +24,8 @@ e.val <- read_csv(here("data","20210412_phylum_evalue.csv"))
 
 taxa <- ident%>%
   select(Genus, Taxonomy )%>%
-  separate(Taxonomy,into = c("phylum", "order", "extra"), sep = ";", extra = "merge")
+  separate(Taxonomy,into = c("phylum", "order", "extra"), sep = ";", extra = "merge") %>% 
+  mutate(phylum = trimws(phylum), order = trimws(order))
 
 
 ```
@@ -34,12 +35,12 @@ taxa <- ident%>%
 # # https://www.datanovia.com/en/lessons/heatmap-in-r-static-and-interactive-visualization/
 # library(RColorBrewer)
 # # R base heatmap: heatmap()  
-# d <- ident%>%
-#   select(-Taxonomy)%>%
-#   left_join(.,taxa[,1:3])%>%
-#   select(-Genus, -order, -phylum) %>% 
-#   as.matrix()  
-# row.names(d) <- left_join(ident,taxa[,1:3])%>%pull(order)
+d <- ident%>%
+  select(-Taxonomy)%>%
+  left_join(.,taxa[,1:3])%>%
+  select(-Genus, -order, -phylum) %>%
+  as.matrix()
+row.names(d) <- left_join(ident,taxa[,1:3])%>%pull(order)
 # 
 # 
 # pdf(file = here("plots/hm.pdf"),width = 8, height = 8 )
