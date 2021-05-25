@@ -6,6 +6,7 @@ editor_options:
 ---
 
 ```{r setup, message=FALSE, echo=FALSE}
+# setwd("~/GitHub/phage_e/")
 library(here)
 library(tidyverse)
 library(cowplot)
@@ -27,22 +28,24 @@ taxa <- ident%>%
 
 
 ```
+
+
 ```{r}
-# https://www.datanovia.com/en/lessons/heatmap-in-r-static-and-interactive-visualization/
-library(RColorBrewer)
-# R base heatmap: heatmap()  
-d <- ident%>%
-  select(-Taxonomy)%>%
-  left_join(.,taxa[,1:3])%>%
-  select(-Genus, -order, -phylum) %>% 
-  as.matrix()  
-row.names(d) <- left_join(ident,taxa[,1:3])%>%pull(order)
-
-
-pdf(file = here("hm.pdf"),width = 8, height = 8 )
-# par(mar=c(20,20,20,20))
-heatmap(d, col = brewer.pal(8, "Reds"))
-dev.off()
+# # https://www.datanovia.com/en/lessons/heatmap-in-r-static-and-interactive-visualization/
+# library(RColorBrewer)
+# # R base heatmap: heatmap()  
+# d <- ident%>%
+#   select(-Taxonomy)%>%
+#   left_join(.,taxa[,1:3])%>%
+#   select(-Genus, -order, -phylum) %>% 
+#   as.matrix()  
+# row.names(d) <- left_join(ident,taxa[,1:3])%>%pull(order)
+# 
+# 
+# pdf(file = here("plots/hm.pdf"),width = 8, height = 8 )
+# # par(mar=c(20,20,20,20))
+# heatmap(d, col = brewer.pal(8, "Reds"))
+# dev.off()
 ```
 
 ```{r}
@@ -63,12 +66,79 @@ col_fun = colorRamp2(c(0, 1, 100), c("grey80", "pink", "red"))
 ha = rowAnnotation(phylum = anno_text(d$phylum, gp = gpar(fontsize = 12)))
 ```
 
+# Different versions of heat map
 
+1. Cluster all
 ```{r}
-pdf(file = here("perc-id.pdf"),width = 11, height = 8 )
+pdf(file = here("plots/perc-id_1.pdf"),width = 11, height = 8 )
 Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
          col = col_fun,
-        # rect_gp = gpar(col = "grey", lwd = .2),
+        rect_gp = gpar(col = "grey", lwd = .2),
+        
+        name = "%ID", #title of legend
+        column_title = "Phage E genes", row_title = "homoog taxa",
+        
+        right_annotation = rowAnnotation(
+          phylum = d$phylum,
+          order = d$order)
+)
+
+dev.off()
+```
+
+2. sort phylum, cluster order
+```{r}
+pdf(file = here("plots/perc-id-2.pdf"),width = 11, height = 8 )
+Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
+         col = col_fun,
+        rect_gp = gpar(col = "grey", lwd = .2),
+        
+        name = "%ID", #title of legend
+        column_title = "Phage E genes", row_title = "homoog taxa",
+        
+        right_annotation = rowAnnotation(
+          order = d$order,
+          phylum = anno_block(gp = gpar(fill = "white", col=NA),
+                              labels = levels(factor(d$phylum)), 
+                              labels_gp = gpar(col = "black", fontsize = 10),
+                              labels_rot = 0)),
+        row_split =  factor(d$phylum)#,
+        # row_order = order(d$order)#,
+        # column_order = colnames(d %>% select(where(is.numeric))) %>% parse_number() %>% order()
+)
+
+dev.off()
+```
+3. sort rows, cluster columns
+```{r}
+pdf(file = here("plots/perc-id-3.pdf"),width = 11, height = 8 )
+Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
+         col = col_fun,
+        rect_gp = gpar(col = "grey", lwd = .2),
+        
+        name = "%ID", #title of legend
+        column_title = "Phage E genes", row_title = "homoog taxa",
+        
+        right_annotation = rowAnnotation(
+          order = d$order,
+          phylum = anno_block(gp = gpar(fill = "white", col=NA),
+                              labels = levels(factor(d$phylum)), 
+                              labels_gp = gpar(col = "black", fontsize = 10),
+                              labels_rot = 0)),
+        row_split =  factor(d$phylum),
+        row_order = order(d$order)#,
+        # column_order = colnames(d %>% select(where(is.numeric))) %>% parse_number() %>% order()
+)
+
+dev.off()
+```
+
+4. all in order
+```{r}
+pdf(file = here("plots/perc-id-4.pdf"),width = 11, height = 8 )
+Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
+         col = col_fun,
+        rect_gp = gpar(col = "grey", lwd = .2),
         
         name = "%ID", #title of legend
         column_title = "Phage E genes", row_title = "homoog taxa",
@@ -86,6 +156,11 @@ Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
 
 dev.off()
 ```
+
+
+
+#--------------------------#
+
 ```{r}
 
 d <-e.val %>% 
@@ -116,6 +191,8 @@ Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
 
 dev.off()
 ```
+
+
 ```{r}
 #https://cran.r-project.org/web/packages/heatmaply/vignettes/heatmaply.html
 
@@ -141,7 +218,7 @@ heatmaply(d, na.value = "blue",
 
 
 
-ggheatmap(d,
+# ggheatmap(d,
           scale_fill_gradient_fun = scale_fill_gradient2(low = "gray95", high = "red"),
           xlab = "Phage E gene",
           ylab = "Taxa",
