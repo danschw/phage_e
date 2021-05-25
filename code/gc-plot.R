@@ -17,7 +17,10 @@ d %>%
 
 
 d %>% 
-  ggplot(aes(Environment, `Phage GC(%)`))+
-    geom_jitter(aes(color = label), size = 2, width = .1, height = 0)+
-    # ggrepel::geom_text_repel(aes(label = label))+
-    theme_classic()
+  ggplot(aes(`Host (genus)`, `Phage GC(%)`))+
+    geom_jitter(aes(fill = Environment, size = `# tRNA genes`),shape=21, width = .2, height = 0)+
+  geom_text(aes(label = label), nudge_x = -0.1)+
+  scale_fill_manual(values = c("marine"="white", "freshwater"="grey"))+  
+  theme_bw()+
+  coord_flip()+
+  ggsave(here("plots/gc-phage.png"), width = 6,height = 4)
