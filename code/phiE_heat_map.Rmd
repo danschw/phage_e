@@ -1,0 +1,233 @@
+---
+title: "Enrichment anaysis of sporulation genes in RNAseq of cloned sigma factors"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, message=FALSE, echo=FALSE}
+library(here)
+library(tidyverse)
+library(cowplot)
+# library(heatmaply)
+```
+
+```{r read data, message=FALSE, echo=FALSE}
+
+
+ident <- read_csv(here("data","20210412_phylum_perc-id.csv"))
+e.val <- read_csv(here("data","20210412_phylum_evalue.csv"))
+
+#From Sarit:
+# at the taxonomy, the first word is the Phylum, and the second is the order
+
+taxa <- ident%>%
+  select(Genus, Taxonomy )%>%
+  separate(Taxonomy,into = c("phylum", "order", "extra"), sep = ";", extra = "merge")
+
+
+```
+```{r}
+# https://www.datanovia.com/en/lessons/heatmap-in-r-static-and-interactive-visualization/
+library(RColorBrewer)
+# R base heatmap: heatmap()  
+d <- ident%>%
+  select(-Taxonomy)%>%
+  left_join(.,taxa[,1:3])%>%
+  select(-Genus, -order, -phylum) %>% 
+  as.matrix()  
+row.names(d) <- left_join(ident,taxa[,1:3])%>%pull(order)
+
+
+pdf(file = here("hm.pdf"),width = 8, height = 8 )
+# par(mar=c(20,20,20,20))
+heatmap(d, col = brewer.pal(8, "Reds"))
+dev.off()
+```
+
+```{r}
+# https://jokergoo.github.io/ComplexHeatmap-reference/book/
+library(ComplexHeatmap)
+library(cluster)
+library(circlize)
+
+d <- ident%>%
+  select(-Taxonomy)%>%
+  left_join(.,taxa[,1:3])%>%
+  select(-Genus)
+
+col_fun = colorRamp2(c(0, 1, 100), c("grey80", "pink", "red"))
+
+
+# Create the heatmap annotation
+ha = rowAnnotation(phylum = anno_text(d$phylum, gp = gpar(fontsize = 12)))
+```
+
+
+```{r}
+pdf(file = here("perc-id.pdf"),width = 11, height = 8 )
+Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
+         col = col_fun,
+        # rect_gp = gpar(col = "grey", lwd = .2),
+        
+        name = "%ID", #title of legend
+        column_title = "Phage E genes", row_title = "homoog taxa",
+        
+        right_annotation = rowAnnotation(
+          order = d$order,
+          phylum = anno_block(gp = gpar(fill = "white", col=NA),
+                              labels = levels(factor(d$phylum)), 
+                              labels_gp = gpar(col = "black", fontsize = 10),
+                              labels_rot = 0)),
+        row_split =  factor(d$phylum),
+        row_order = order(d$order),
+        column_order = colnames(d %>% select(where(is.numeric))) %>% parse_number() %>% order()
+)
+
+dev.off()
+```
+```{r}
+
+d <-e.val %>% 
+  separate(Taxonomy,into = c("phylum", "order", "extra"), sep = ";", extra = "merge") %>% 
+  select(-extra, -Genus) %>% 
+   mutate_if(is.numeric,  ~ -1*log10(.))
+
+col_fun = colorRamp2(c(0, 1, 200), c("grey80", "pink", "red"))
+
+pdf(file = here("e-value.pdf"),width = 11, height = 8 )
+Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
+         col = col_fun,
+        # rect_gp = gpar(col = "grey", lwd = .2),
+        
+        name = "-log10(E-value)", #title of legend
+        column_title = "Phage E genes", row_title = "homoog taxa",
+        
+        right_annotation = rowAnnotation(
+          order = d$order,
+          phylum = anno_block(gp = gpar(fill = "white", col=NA),
+                              labels = levels(factor(d$phylum)), 
+                              labels_gp = gpar(col = "black", fontsize = 10),
+                              labels_rot = 0)),
+        row_split =  factor(d$phylum),
+        row_order = order(d$order),
+        column_order = colnames(d %>% select(where(is.numeric))) %>% parse_number() %>% order()
+)
+
+dev.off()
+```
+```{r}
+#https://cran.r-project.org/web/packages/heatmaply/vignettes/heatmaply.html
+
+d <- ident%>%
+  select(-Taxonomy)%>%
+  left_join(.,taxa[,1:3])%>%
+  select(-Genus)
+
+# apply(select(d, -phylum, -order), 2, function(x) sum(!is.na(x)))
+# apply(select(d, -phylum, -order), 1, function(x) sum(!is.na(x)))
+
+# heatmaply(d, na.value = "blue", 
+#           scale_fill_gradient_fun = scale_fill_gradient2(low = "gray95", high = "red"),
+#           xlab = "Phage E gene",
+#           ylab = "Taxa",
+#           file = "id1_heatmaply_plot.html")
+
+heatmaply(d, na.value = "blue", 
+          scale_fill_gradient_fun = scale_fill_gradient2(low = "gray95", high = "red"),
+          xlab = "Phage E gene",
+          ylab = "Taxa",
+          file = here("id1_heatmaply_plot.png"))
+
+
+
+ggheatmap(d,
+          scale_fill_gradient_fun = scale_fill_gradient2(low = "gray95", high = "red"),
+          xlab = "Phage E gene",
+          ylab = "Taxa",
+          hide_colorbar = TRUE)
+
+```
+
+### Add information on genes
+```{r}
+genes <- read_csv("genes.csv")
+
+genes$`ORF No.` <- str_c("G", genes$`ORF No.`)
+genes$label <- str_c(str_replace_na(genes$`Predicted Function`, replacement = "NA"),genes$`ORF No.`, sep = "_" )
+genes$label <- str_remove(genes$label, "NA_")
+labels <- 
+ident%>%
+ select(contains("G"))%>%
+  select(-Genus)%>%
+  colnames()
+
+genes%>%
+  filter(genes$`ORF No.` %in% labels)%>%
+  select(label)%>%
+  deframe() -> labels
+
+ident <- 
+  ident%>%
+  rename_if(is.numeric, ~labels)
+
+ident%>%
+  select(-Taxonomy)%>%
+  left_join(., taxa[,1:3])%>%
+  column_to_rownames("Genus")%>%
+  heatmaply(., 
+          scale_fill_gradient_fun = scale_fill_gradient2(low = "gray95", high = "red"),
+          xlab = "Phage E gene",
+          ylab = "Taxa",
+          file = "id2_heatmaply_plot.html")
+```
+
+# presence-absence
+```{r}
+ident%>%
+  select(-Taxonomy)%>%
+  mutate_if(is.numeric, funs(if_else(.>0,1,0)))%>%
+  left_join(., taxa[,1:3])%>%
+      column_to_rownames("Genus")%>%
+  heatmaply(., 
+          scale_fill_gradient_fun = scale_fill_gradient2(low = "gray95", high = "red"),
+          xlab = "Phage E gene",
+          ylab = "Taxa",
+          file = "id_PA_heatmaply_plot.html")
+```
+
+
+# E values (-log)
+Before doing the -log transformation I changed cells having e-value=0 to 1e-200 to make it out of the range of the non-zero values which had a minimum o 1e-180.
+
+```{r}
+e.val%>%
+  mutate_if(is.numeric,  ~ -1*log10(.))%>%
+  select(-Taxonomy, Genus)%>%
+  left_join(., taxa[,1:3])%>%
+  column_to_rownames("Genus")%>%
+heatmaply(., 
+          scale_fill_gradient_fun = scale_fill_gradient2(low = "gray95", high = "red"),
+          xlab = "Phage E gene",
+          ylab = "Taxa",
+          file = "eval1_heatmaply_plot.html")
+```
+
+```{r}
+e.val%>%
+    mutate_if(is.numeric,  ~ -1*log10(.))%>%
+  select(-Taxonomy)%>%
+  # left_join(., taxa[,1:3])%>%
+  column_to_rownames("Genus")%>%
+  # select(-Genus)%>%
+heatmaply(., 
+          scale_fill_gradient_fun = scale_fill_gradient2(low = "gray95", high = "red"),
+          row_side_colors = taxa[,2:3],
+          xlab = "Phage E gene",
+          ylab = "Taxa",
+          file = "eval2_heatmaply_plot.html")
+```
+```
+
+
+

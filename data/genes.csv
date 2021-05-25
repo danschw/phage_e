@@ -1,0 +1,73 @@
+﻿ORF No.,Start,End,No. a.a (strand),Protein Category,Gene Name,Predicted Function
+1,95,610,171 (+),DNA packaging,,Terminase small subunit
+2,603,2708,701 (+),DNA packaging,A,Phage terminase large subunit A
+3,2705,2923,72 (+),,,Hypothetical protein
+4,2923,4476,517 (+),Head structure and assembly,B,"Phage portal protein, lambda family"
+5,4473,5747,424 (+),Head structure and assembly,SppA,Signal peptide peptidase A
+6,5754,6140,128 (+),Head structure and assembly,D,Bacteriophage lambda head decoration protein D
+7,6153,7175,340 (+),Head structure and assembly,E,Phage major capsid protein E
+8,7177,7341,54 (+),,,
+9,7409,7741,110 (+),,,
+10,7738,8139,133 (+),,,
+11,8136,9935,599 (+),Tail structure and assembly,,Possible tail fiber protein
+12,9932,10924,330 (+),Tail structure and assembly,,Tail assembly protein
+13,10921,11268,115 (+),,,
+14,11265,11762,165 (+),,,Hypothetical protein
+15,11743,11937,64 (+),,,
+16,11974,12801,275 (+),Tail structure and assembly,,Possible major tail protein
+17,12853,13218,121 (+),,,
+18,13221,13775,184 (+),,,Hypothetical protein
+19,13775,18157,1460 (+),Tail structure and assembly,,Phage tail tape measure protein
+20,18157,21396,1079 (+),,,Hypothetical protein
+21,21393,21719,108 (+),,,Hypothetical protein
+22,21716,22969,417 (+),,,Hypothetical protein
+23,22966,23328,120 (+),,,
+24,23692,24708,338 (+),,XerC,Integrase
+25,24941,24705,78 (-),,,
+26,25135,24938,65 (-),,,
+27,25566,25132,144 (-),,,
+28,25645,25505,47 (-),,,
+29,26074,25796,92 (-),,,Hypothetical protein
+30,26283,26071,70 (-),,,
+31,26528,26280,82 (-),,,Hypothetical protein
+32,27044,26871,57 (-),,,Hypothetical protein
+33,27300,27019,94 (-),,,Hypothetical protein
+34,27744,27304,146 (-),,,Single-stranded DNA-binding protein
+35,28397,27741,218 (-),,,YqaJ-like viral recombinase 
+36,29235,28390,281 (-),,,Hypothetical protein
+37,29420,29232,62 (-),,,
+38,30472,29423,349 (-),,,Hypothetical protein
+39,30970,30659,103 (-),,,
+40,31241,31032,69 (-),,,
+41,31453,31238,71 (-),,,
+42,31581,31444,45 (-),,,
+43,31907,31578,109 (-),,,
+44,32143,31904,79 (-),,,
+45,32626,32249,125 (-),,,Hypothetical protein
+46,32969,32613,118 (-),,,Cro/CI
+47,33058,33330,90 (+),,,Helix-turn-helix XRE-family like protein
+48,33457,33870,137 (+),,,Hypothetical protein
+49,33867,34088,73 (+),,,
+50,34085,34291,68 (+),,,
+51,34288,34644,118 (+),,,Possible phage RecA-dependent nuclease
+52,34635,34793,52 (+),,,
+53,34890,35564,224 (+),,,Hypothetical protein
+54,35561,36862,433 (+),DNA replication /metabolism,DnaB,Replicative DNA helicase
+55,36862,37374,170 (+),,,Hypothetical protein
+56,37556,37852,98 (+),,,
+57,37849,38136,95 (+),,,
+58,38260,38997,245 (+),DNA replication /metabolism,,Putative methyltransferase
+59,39044,40894,616 (+),DNA replication /metabolism,,DNA methylase
+60,40891,41235,114 (+),,,
+61,41232,41651,139 (+),DNA replication /metabolism,RusA,RusA family crossover junction endodeoxyribonuclease
+62,41793,42212,139 (+),,,Hypothetical protein
+63,42479,42802,107 (+),,,
+64,42750,43076,109 (+),,,Hypothetical protein
+65,43073,43339,88 (+),,,Hypothetical protein
+66,43336,43851,171 (+),Lysis,RrrD,Phage-related lysozyme
+67,43861,44598,245 (+),,,Hypothetical protein
+68,44595,44819,74 (+),,,
+69,44946,45281,111 (+),,,Hypothetical protein
+70,45278,45628,116 (+),,,Hypothetical protein
+71,45625,46026,133 (+),,,
+72,46023,46202,59 (+),,,
