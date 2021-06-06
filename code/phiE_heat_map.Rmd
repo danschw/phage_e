@@ -75,7 +75,7 @@ ha = rowAnnotation(phylum = anno_text(d$phylum, gp = gpar(fontsize = 12)))
 ```{r}
 set.seed(5)
 pdf(file = here("plots/perc-id.pdf"),width = 6, height = 4 )
-p <- Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
+Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
          col = col_fun,
         border = "grey90",
         
@@ -101,12 +101,8 @@ p <- Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
         # column_order = colnames(d %>% select(where(is.numeric))) %>% parse_number() %>% order()
 )
 
-p
-
 dev.off()
 ```
-
-
 
 
 # Different versions of heat map
