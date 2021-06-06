@@ -54,18 +54,60 @@ row.names(d) <- left_join(ident,taxa[,1:3])%>%pull(order)
 library(ComplexHeatmap)
 library(cluster)
 library(circlize)
+library(viridis)
 
 d <- ident%>%
   select(-Taxonomy)%>%
   left_join(.,taxa[,1:3])%>%
   select(-Genus)
 
-col_fun = colorRamp2(c(0, 1, 100), c("grey80", "pink", "red"))
-
-
+col_fun = colorRamp2(c(0, 1, 50, 100), c("white", "seashell","red", "brown"))
+col_fun_phyla <- setNames(viridis(length(d$phylum %>% unique() )),
+                          d$phylum %>% unique() %>% sort()) %>% 
+  list(phylum = .)
+col_phyla <-d$phylum %>% unique()
+names(col_phyla) <- 
+  viridis::viridis(length(d$phylum %>% unique()))
 # Create the heatmap annotation
 ha = rowAnnotation(phylum = anno_text(d$phylum, gp = gpar(fontsize = 12)))
 ```
+
+```{r}
+set.seed(5)
+pdf(file = here("plots/perc-id.pdf"),width = 6, height = 4 )
+p <- Heatmap(d %>% select(where(is.numeric)) %>% as.matrix(),
+         col = col_fun,
+        border = "grey90",
+        
+        
+        column_km = 4,
+        
+        name = "%ID", #title of legend
+        column_title = "Phage E genes", row_title = "homolog taxa",
+        column_names_gp = gpar(fontsize = 8),
+        
+        right_annotation = rowAnnotation(
+          phylum = d$phylum,
+          col = col_fun_phyla,
+          phylum = anno_block(#gp = gpar(fill = "white", col=NA),
+                              labels = levels(factor(d$phylum)),
+                              labels_gp = gpar(col = "black", fontsize = 10),
+                              labels_rot = 0)
+          ),
+        
+        row_split =  factor(d$phylum),
+        
+        row_order = order(d$phylum)#,
+        # column_order = colnames(d %>% select(where(is.numeric))) %>% parse_number() %>% order()
+)
+
+p
+
+dev.off()
+```
+
+
+
 
 # Different versions of heat map
 
