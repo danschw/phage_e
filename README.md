@@ -1,1 +1,1 @@
-Analuses related to genome of phage E
+Analyses related to genome of phage E
