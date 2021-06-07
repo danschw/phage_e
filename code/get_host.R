@@ -5,8 +5,9 @@ library(tidyverse)
 d.phage <- read_csv(here("data/phage-gc-content.csv"), trim_ws = T)
 
 #looking at all   non-siphos
-d.phage <- d.phage %>% 
-  filter ( Family != "Siphoviridae" )
+d.phage <- d.phage 
+# %>% 
+#   filter ( Family != "Siphoviridae" )
 
 #import virus-host data
 vh.db <- read_tsv(here("data","virushostdb.tsv") ) 
@@ -45,7 +46,8 @@ d.phage.join <-
 
 
 write_csv(d.phage.join,
-          here("data/phage-host-marine-nonsipho.csv"))
+          # here("data/phage-host-marine-nonsipho.csv"))
+          here("data/phage-host.csv"))
 
 # tests
 # # reciprocal presence
