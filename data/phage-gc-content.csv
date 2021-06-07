@@ -1,0 +1,152 @@
+Accession,Description,Genome length (bp),GC(%),Family,Host,env.source
+NC_016657,Cyanophage 9515-10a,47055,39.197,Autographiviridae,Prochlorococcus,marine
+NC_016658,Cyanophage NATL1A-7,47741,38.732,Autographiviridae,Prochlorococcus,marine
+NC_016659,Cyanophage NATL2A-133,47536,39.871,Autographiviridae,Prochlorococcus,marine
+NC_016656,Cyanophage P-SSP2,45890,37.932,Autographiviridae,Prochlorococcus,marine
+NC_020872,Cyanophage SS120-1,46997,40.492,Autographiviridae,Prochlorococcus,marine
+NC_020878,Prochlorococcus phage P-GSP1,44945,39.551,Autographiviridae,Prochlorococcus,marine
+HQ332139,Prochlorococcus phage P-RSP2,42257,34.049,Autographiviridae,Prochlorococcus,marine
+NC_020835,Prochlorococcus phage P-SSP10,47325,39.231,Autographiviridae,Prochlorococcus,marine
+NC_020874,Prochlorococcus phage P-SSP3,46198,37.941,Autographiviridae,Prochlorococcus,marine
+HQ634152,Prochlorococcus phage P-SSP6,47039,39.187,Autographiviridae,Prochlorococcus,marine
+NC_006882,Prochlorococcus virus PSSP7,45176,38.824,Autographiviridae,Prochlorococcus,marine
+NC_020865,Cyanophage KBS-P-1A,45730,47.354,Autographiviridae,Synechococcus,marine
+NC_048171,Synechococcus phage S-B28,45424,42.059,Autographiviridae,Synechococcus,marine
+NC_025456,Synechococcus phage S-CBP1,46547,47.578,Autographiviridae,Synechococcus,marine
+NC_025455,Synechococcus phage S-CBP2,46237,55.034,Autographiviridae,Synechococcus,marine
+NC_025461,Synechococcus phage S-CBP3,45871,46.949,Autographiviridae,Synechococcus,marine
+NC_048183,Synechococcus phage S-CBP4,41824,44.293,Autographiviridae,Synechococcus,marine
+NC_029031,Synechococcus phage S-CBP42,45218,54.551,Autographiviridae,Synechococcus,marine
+NC_020867,Synechococcus phage S-RIP1,44892,42.93,Autographiviridae,Synechococcus,marine
+NC_020838,Synechococcus phage S-RIP2,45728,47.343,Autographiviridae,Synechococcus,marine
+MT424636,Synechococcus phage S-SBP1,45519,46.846,Autographiviridae,Synechococcus,marine
+NC_048026,Synechococcus T7-like phage S-TIP37,45477,50.483,Autographiviridae,Synechococcus,marine
+NC_003390,Synechococcus virus P60,46675,53.285,Autographiviridae,Synechococcus,marine
+NC_009531,Synechococcus virus Syn5,46214,54.97,Autographiviridae,Synechococcus,marine
+NC_021071,Cyanophage P-RSM1,177211,40.194,Myoviridae,Prochlorococcus,marine
+HQ634176,Cyanophage P-RSM3,178750,36.747,Myoviridae,Prochlorococcus,marine
+NC_020855,Cyanophage P-RSM6,192497,39.316,Myoviridae,Prochlorococcus,marine
+NC_028663,Cyanophage P-TIM40,188632,40.717,Myoviridae,Prochlorococcus,marine
+NC_020845,Prochlorococcus phage MED4-213,180977,37.764,Myoviridae,Prochlorococcus,marine
+NC_015280,Prochlorococcus phage P-HM1,181044,37.849,Myoviridae,Prochlorococcus,marine
+NC_015284,Prochlorococcus phage P-HM2,183806,38.115,Myoviridae,Prochlorococcus,marine
+NC_015283,Prochlorococcus phage P-RSM4,176428,37.644,Myoviridae,Prochlorococcus,marine
+NC_006883,Prochlorococcus phage P-SSM2,252401,35.506,Myoviridae,Prochlorococcus,marine
+NC_021559,Prochlorococcus phage P-SSM3,179063,36.731,Myoviridae,Prochlorococcus,marine
+NC_006884,Prochlorococcus phage P-SSM4,178249,36.744,Myoviridae,Prochlorococcus,marine
+HQ632825,Prochlorococcus phage P-SSM5,252013,35.525,Myoviridae,Prochlorococcus,marine
+NC_015290,Prochlorococcus phage P-SSM7,182180,37.086,Myoviridae,Prochlorococcus,marine
+NC_028955,Prochlorococcus phage P-TIM68,197361,34.321,Myoviridae,Prochlorococcus,marine
+NC_015288,Prochlorococcus phage Syn1,191195,40.617,Myoviridae,Prochlorococcus,marine
+NC_015285,Prochlorococcus phage Syn33,174285,39.57,Myoviridae,Prochlorococcus,marine
+NC_047717,Cyanophage S-RIM12,175559,39.519,Myoviridae,Synechococcus,marine
+KX349298,Cyanophage S-RIM14,179558,41.098,Myoviridae,Synechococcus,marine
+NC_031235,Cyanophage S-RIM32,194437,39.868,Myoviridae,Synechococcus,marine
+MK493321,Cyanophage S-RIM4,175462,41.196,Myoviridae,Synechococcus,marine
+NC_047734,Cyanophage S-RIM44,197450,40.367,Myoviridae,Synechococcus,marine
+NC_031242,Cyanophage S-RIM50,174307,40.281,Myoviridae,Synechococcus,marine
+JF974292,Cyanophage S-SSM2,179980,41.096,Myoviridae,Synechococcus,marine
+HQ317391,Cyanophage S-SSM6a,232883,39.127,Myoviridae,Synechococcus,marine
+HQ316603,Cyanophage S-SSM6b,182368,39.403,Myoviridae,Synechococcus,marine
+NC_048015,Cyanophage S-TIM4,176495,37.657,Myoviridae,Synechococcus,marine
+NC_019516,Cyanophage S-TIM5,161440,40.458,Myoviridae,Synechococcus,marine
+HQ634191,Cyanophage Syn10,177103,40.607,Myoviridae,Synechococcus,marine
+HQ634190,Cyanophage Syn2,175596,41.271,Myoviridae,Synechococcus,marine
+KJ019026,Synechococcus phage ACG-2014a,171282,39.36,Myoviridae,Synechococcus,marine
+NC_047719,Synechococcus phage ACG-2014b,172874,39.112,Myoviridae,Synechococcus,marine
+NC_019444,Synechococcus phage ACG-2014c,176043,39.119,Myoviridae,Synechococcus,marine
+NC_026923,Synechococcus phage ACG-2014d,179110,40.265,Myoviridae,Synechococcus,marine
+NC_026928,Synechococcus phage ACG-2014e,189418,38.938,Myoviridae,Synechococcus,marine
+NC_047714,Synechococcus phage ACG-2014f,196842,41.536,Myoviridae,Synechococcus,marine
+NC_026924,Synechococcus phage ACG-2014g,174885,39.258,Myoviridae,Synechococcus,marine
+NC_023587,Synechococcus phage ACG-2014h,189311,40.491,Myoviridae,Synechococcus,marine
+NC_027132,Synechococcus phage ACG-2014i,190768,39.008,Myoviridae,Synechococcus,marine
+NC_026926,Synechococcus phage ACG-2014j,192108,38.566,Myoviridae,Synechococcus,marine
+MN695335,Synechococcus phage B23,243633,35.393,Myoviridae,Synechococcus,marine
+MN695334,Synechococcus phage B3,244930,35.363,Myoviridae,Synechococcus,marine
+NC_047838,Synechococcus phage Bellamy,204930,41.105,Myoviridae,Synechococcus,marine
+JF974293,Synechococcus phage KBS-M-1A,171744,40.637,Myoviridae,Synechococcus,marine
+NC_019443,Synechococcus phage metaG-MbCM1,172879,39.762,Myoviridae,Synechococcus,marine
+MK799832,Synechococcus phage S-B05,208857,39.865,Myoviridae,Synechococcus,marine
+MN018232,Synechococcus phage S-B43,213993,39.431,Myoviridae,Synechococcus,marine
+MH107246,Synechococcus phage S-B64,151867,41.275,Myoviridae,Synechococcus,marine
+MK016664,Synechococcus phage S-B68,163982,51.745,Myoviridae,Synechococcus,marine
+NC_020837,Synechococcus phage S-CAM1,198013,43.025,Myoviridae,Synechococcus,marine
+NC_031903,Synechococcus phage S-CAM22,172345,39.913,Myoviridae,Synechococcus,marine
+NC_031906,Synechococcus phage S-CAM3,198190,41.558,Myoviridae,Synechococcus,marine
+NC_031900,Synechococcus phage S-CAM4,191983,38.583,Myoviridae,Synechococcu,marine
+NC_031927,Synechococcus phage S-CAM7,216121,41.18,Myoviridae,Synechococcus,marine
+NC_021530,Synechococcus phage S-CAM8,171407,39.333,Myoviridae,Synechococcus,marine
+NC_031922,Synechococcus phage S-CAM9,174830,39.046,Myoviridae,Synechococcus,marine
+NC_048106,Synechococcus phage S-CBWM1,139069,51.623,Myoviridae,Synechococcus,marine
+MH920640,Synechococcus phage S-E7,177622,39.894,Myoviridae,Synechococcus,marine
+MT162468,Synechococcus phage S-H25,173659,41.171,Myoviridae,Synechococcus,marine
+MT162467,Synechococcus phage S-H34,167040,50.076,Myoviridae,Synechococcus,marine
+KY945241,Synechococcus phage S-H35,174231,41.188,Myoviridae,Synechococcus,marine
+MW117965,Synechococcus phage S-H38,180224,42.424,Myoviridae,Synechococcus,marine
+MK016663,Synechococcus phage S-H68,79639,40.366,Myoviridae,Synechococcus,marine
+MW117966,Synechococcus phage S-H9-1,192454,40.994,Myoviridae,Synechococcus,marine
+MW147367,Synechococcus phage S-H9-2,187320,40.32,Myoviridae,Synechococcus,marine
+NC_021536,Synechococcus phage S-IOM18,171797,40.572,Myoviridae,Synechococcus,marine
+NC_023584,Synechococcus phage S-MbCM100,170438,39.369,Myoviridae,Synechococcus,marine
+KF156339,Synechococcus phage S-MbCM25,176044,39.092,Myoviridae,Synechococcus,marine
+MT162466,Synechococcus phage S-N03,167069,50.053,Myoviridae,Synechococcus,marine
+NC_048102,Synechococcus phage S-P4,158485,39.946,Myoviridae,Synechococcus,marine
+NC_006820,Synechococcus phage S-PM2,196280,37.82,Myoviridae,Synechococcus,marine
+KX349226,Synechococcus phage S-RIM2,175410,42.161,Myoviridae,Synechococcus,marine
+NC_047733,Synechococcus phage S-RIM8,171216,40.63,Myoviridae,Synechococcus,marine
+NC_013085,Synechococcus phage S-RSM4,194454,41.12,Myoviridae,Synechococcus,marine
+MK867354,Synechococcus phage S-SCSM1,228827,36.842,Myoviridae,Synechococcus,marine
+NC_015281,Synechococcus phage S-ShM2,179563,41.107,Myoviridae,Synechococcus,marine
+NC_020851,Synechococcus phage S-SKS1,208007,36.027,Myoviridae,Synechococcus,marine
+NC_015282,Synechococcus phage S-SM1,174079,41.138,Myoviridae,Synechococcus,marine
+NC_015279,Synechococcus phage S-SM2,190789,40.426,Myoviridae,Synechococcus,marine
+NC_020875,Synechococcus phage S-SSM4,182801,39.393,Myoviridae,Synechococcus,marine
+NC_015289,Synechococcus phage S-SSM5,176184,39.962,Myoviridae,Synechococcus,marine
+NC_015287,Synechococcus phage S-SSM7,232878,39.116,Myoviridae,Synechococcus,marine
+NC_048049,Synechococcus phage S-T4,181082,38.927,Myoviridae,Synechococcus,marine
+NC_031944,Synechococcus phage S-WAM1,185102,44.659,Myoviridae,Synechococcus,marine
+NC_031935,Synechococcus phage S-WAM2,186386,41.321,Myoviridae,Synechococcus,marine
+NC_015286,Synechococcus phage Syn19,175230,41.251,Myoviridae,Synechococcus,marine
+NC_021072,Synechococcus phage Syn30,178807,39.948,Myoviridae,Synechococcus,marine
+NC_008296,Synechococcus phage syn9,177300,40.634,Myoviridae,Synechococcus,marine
+MT408532,Synechococcus phage SynMITS9220M01,190237,38.838,Myoviridae,Synechococcus,marine
+MH629685,Synechococcus virus S-PRM1,144311,40.743,Myoviridae,Synechococcus,marine
+NC_020857,Cyanophage MED4-117,38834,37.246,Siphoviridae,Prochlorococcus,marine
+NC_013021,Cyanophage PSS2,107530,52.301,Siphoviridae,Prochlorococcus,marine
+NC_020847,Prochlorococcus phage MED4-184,38327,37.157,Siphoviridae,Prochlorococcus,marine
+MT490303,Prochlorococcus phage P-HS2,38327,37.157,Siphoviridae,Prochlorococcus,marine
+NC_020854,Cyanophage KBS-S-2A,40658,49.068,Siphoviridae,Synechococcus,marine
+NC_016164,Synechococcus phage S-CBS1,30332,58.75,Siphoviridae,Synechococcus,marine
+NC_015463,Synechococcus phage S-CBS2,72332,54.474,Siphoviridae,Synechococcus,marine
+NC_015465,Synechococcus phage S-CBS3,33004,60.72,Siphoviridae,Synechococcus,marine
+NC_016766,Synechococcus phage S-CBS4,69420,50.828,Siphoviridae,Synechococcus,marine
+MK105819,Synechococcus phage S-H1,39158,53.718,Siphoviridae,Synechococcus,marine
+NC_052968,Synechococcus virus S-ESS1,60362,60.904,Siphoviridae,Synechococcus,marine
+MW334946,Cyanophage S-2L,45087,69.432,Siphoviridae,Synechococcus,freshwater
+MG209611,Aphanizomenon phage vB_AphaS-CL131,112793,39.682,Siphoviridae,Aphanizomenon,freshwater
+MH636380,Cylindrospermopsis raciborskii virus RM-2018a,104363,39.016,Siphoviridae,Cylindrospermopsis,freshwater
+NC_048756,Nodularia phage vB_NspS-kac65v151,146618,40.31,Siphoviridae,Nodularia,freshwater
+MK605244,Nodularia phage vB_NspS-kac65v162,147033,40.292,Siphoviridae,Nodularia,freshwater
+NC_048757,Nodularia phage vB_NspS-kac68v161,145400,40.235,Siphoviridae,Nodularia,freshwater
+MK605246,Nodularia phage vB_NspS-kac68v162,144444,40.189,Siphoviridae,Nodularia,freshwater
+KY697807,Microcystis phage MACPNOA1,42473,68.265,Siphoviridae,Microcystis,freshwater
+MT362618,Microcystis phage MaeS,79995,37.055,Siphoviridae,Microcystis,freshwater
+MK069556,Microcystis phage Me-ZS1,49665,58.278,Siphoviridae,Microcystis,freshwater
+MN013189,Microcystis phage Mic1,92627,35.17,Siphoviridae,Microcystis,freshwater
+MT855965,Microcystis phage vB_MaeS-yong1,43665,66.735,Siphoviridae,Microcystis,freshwater
+NC_016564,Planktothrix phage PaV-LD,95299,41.45,Siphoviridae,Planktothrix,freshwater
+MT234670,Pseudanabaena phage PA-SR01,137012,39.517,Siphoviridae,Pseudanabaena,freshwater
+MG271909,Synechococcus phage S-LBS1,34641,60.218,Siphoviridae,Synechococcus,freshwater
+KU230356.1,Bacteriophage vB_NpeS-2AV2,139.1,40.3,Siphoviridae,Nodularia,freshwater
+NC_029002,Microcystis phage MaMV-DC,169223,46.032,Myoviridae,Microcystis,freshwater
+NC_008562,Microcystis virus Ma-LMM01,162109,45.953,Myoviridae,Microcystis,freshwater
+KU234533,Nostoc phage A1,68304,36.5,Myoviridae,Nostoc,freshwater
+KU234532,Nostoc phage N1,64960,35.445,Myoviridae,Nostoc,freshwater
+NC_015569,Synechococcus phage S-CRM01,178563,39.745,Myoviridae,Synechococcus,freshwater
+MT457475,Arthronema virus TR020,44805,45.843,Podoviridae,Arthronema,freshwater
+NC_022751,Cyanophage PP,42480,46.408,Podoviridae,Unspecified,freshwater
+NC_024358,Anabaena phage A-4L,41750,43.437,Podoviridae,Anabaena,freshwater
+NC_009551,Phormidium virus WMP3,43249,46.48,Podoviridae,Phormidium,freshwater
+NC_008367,Phormidium virus WMP4,40938,51.803,Podoviridae,Phormidium,freshwater
+KJ410740.1,Synechococcus phage S-EIV1,79178,45.86,Unclassified,Synechococcus,freshwater
