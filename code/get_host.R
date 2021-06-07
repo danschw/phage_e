@@ -34,17 +34,34 @@ d.phage.join <- d.phage %>%
   left_join(., vh.db, by ="virus.tax.id") %>% 
   arrange(host.name,env.source)
 
+# add data on host number
+d.phage.join <- 
+  d.phage.join %>%
+  filter(!is.na(virus.tax.id)) %>%
+  group_by(virus.tax.id) %>% 
+  summarise(n.host=n()) %>% 
+  left_join(d.phage.join, ., by ="virus.tax.id") %>% 
+  arrange(host.name,env.source)
+
+
 write_csv(d.phage.join,
           here("data/phage-host-marine-nonsipho.csv"))
 
 # tests
-# # extra rows due to viruses with multiple hosts
-# look <- d.phage.join %>%
-#   filter(!is.na(virus.tax.id)) %>%
-#   filter(duplicated(virus.tax.id))
 # # reciprocal presence
 # d.phage$Accession %in% d.phage.join$Accession
 # d.phage.join$Accession %in% d.phage$Accession
+
+# # extra rows due to viruses with multiple hosts
+look <- d.phage.join %>%
+  filter(!is.na(virus.tax.id)) %>%
+  filter(duplicated(virus.tax.id))
+
+dup.v <- look$virus.tax.id
+
+look <- d.phage.join %>%
+  filter(virus.tax.id %in% dup.v)
+
 # 
 # look <- d.phage.join %>%
 #   group_by(virus.tax.id) %>%
