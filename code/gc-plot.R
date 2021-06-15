@@ -107,12 +107,25 @@ p5 <- d %>%
 
 legend = get_legend(p5)
 
-plot_grid(p3+theme(legend.position = "none"), 
+p <- plot_grid(p3+theme(legend.position = "none"), 
           # p5,
           p5+theme(legend.position = "none"),
           labels = letters, ncol = 1,
           rel_heights = c(3,5))+
-  draw_grob(legend,.6, 0, 0, 1, vjust = 0)+
-  ggsave(here("plots/gc-phage-6panels-b.png"), width = 8,height = 8)
+  draw_grob(legend,.6, 0, 0, 1, vjust = 0)
 
+  p + ggsave( here("plots/gc-phage-6panels-b.png"), width = 8,height = 8)
+
+
+
+
+#export to pptx using officer and rvg
+library (officer)
+library(rvg)
+
+read_pptx() %>%
+  add_slide(layout = , master = "Office Theme") %>%
+  ph_with(dml(ggobj = p), location = ph_location(type = "body",
+                                                      left = 0, top = 0, width = 7, height = 7)) %>%
+  print(target = here("plots/gc-plot.pptx"))
 
