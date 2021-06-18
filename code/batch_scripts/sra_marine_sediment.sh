@@ -14,4 +14,4 @@ module load sra-toolkit
 mkdir -p /N/slate/danschw/phage_e/marine_sediment
 cd /N/slate/danschw/phage_e/marine_sediment
 
-fastq-dump --gzip --split-files SRR1555743 SRR1555744 SRR1555748 SRR1555750 
+fastq-dump --skip-technical --readids --dumpbase --fasta 60 --split-files --clip SRR1555743 SRR1555744 SRR1555748 SRR1555750 

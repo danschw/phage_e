@@ -14,4 +14,4 @@ module load sra-toolkit
 mkdir -p /N/slate/danschw/phage_e/groundwaters
 cd /N/slate/danschw/phage_e/groundwaters
 
-fastq-dump --gzip --split-files SRR10598216 SRR10598217 SRR10598218 SRR10598219 SRR10598220 SRR10598221 SRR10598222 SRR10598223 SRR10598224 
+fastq-dump --skip-technical --readids --dumpbase --fasta 60 --split-files --clip SRR10598216 SRR10598217 SRR10598218 SRR10598219 SRR10598220 SRR10598221 SRR10598222 SRR10598223 SRR10598224 

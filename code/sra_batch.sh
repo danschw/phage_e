@@ -51,8 +51,8 @@ do
     echo "mkdir -p $OUT_sra" >> $bash_out
     echo "cd ${OUT_sra}" >> $bash_out
     echo '' >> $bash_out
-    echo "fastq-dump --gzip --split-files ${ACC[@]}" >> $bash_out
-
+    echo "fastq-dump --skip-technical --readids --dumpbase --fasta 60 --split-files --clip ${ACC[@]}" >> $bash_out
+    # https://edwards.sdsu.edu/research/fastq-dump/
     sbatch $bash_out
 	echo "${sample_name} submitted"
 done
