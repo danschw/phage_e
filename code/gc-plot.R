@@ -93,10 +93,12 @@ p3 <- d %>%
 p5 <- d %>% 
   filter(!str_detect(phage.type,"Unch")) %>% 
   mutate(label  = if_else(phage.name == "Cr-LKS3", "Cr-LKS3", "")) %>% 
+  mutate(Host = fct_relevel(Host, "Prochlorococcus", "Synechococcus")) %>% 
   ggplot(aes(`Host`, `Phage GC(%)`))+
   geom_segment(aes(y = GC.low, yend = GC.high, xend = Host), color = "pink", size = 4)+
-  geom_jitter(aes(fill = Environment, size = `# tRNA genes`),shape=21, width = .2, height = 0)+
-  geom_text(aes(label = label), nudge_x = -0.3, nudge_y = -2)+
+  geom_jitter(aes(fill = Environment, size = `# tRNA genes`),
+              shape=21, width = .2, height = 0)+
+  geom_text(aes(label = label), nudge_x = -0.5, nudge_y = -3)+
   theme_cowplot()+panel_border(color = "black")+
   coord_flip()+
   facet_wrap(~fct_rev(phage.type), ncol = 2, scales = "free_y", as.table = F)+
