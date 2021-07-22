@@ -137,17 +137,17 @@ p <- d %>%
   # filter(str_detect(geo_loc_name, "Dalton")) %>% 
   filter(sra == "SRR8088692"|sra == "SRR8088693") %>%
   mutate(isolation_source = str_replace(isolation_source, "micro meter filter size", "μm")) %>%
-  ggplot(aes(aln.start, percIdentity)) +
-  geom_rect(data = d.bg, aes(xmin = gene.start, xmax = gene.end), 
-            ymin = min(d$percIdentity), ymax = 100)+
-  geom_segment(aes(xend = aln.end, yend = percIdentity), color = "blue")+
+  ggplot() +
+  geom_rect(data = d.bg, aes(xmin = gene.start, xmax = gene.end,
+            ymin = 29, ymax = 100), fill = "grey90")+
+  geom_segment(aes(x=aln.start,y=percIdentity, xend = aln.end, yend = percIdentity), color = "blue")+
   facet_wrap(~sra + collection_date + isolation_source , strip.position = "right", ncol = 1 )+
   theme_classic()+
   panel_border(color = "black", size = 1)+
   xlab("phage E concatenated proteins")+
   ylab("%ID (tblastn)")+
-  scale_x_continuous(breaks = d.faa$gene.start, labels = d.faa$gene)+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
-        panel.grid.major.x = element_line(color = "grey90"))
+  scale_x_continuous(breaks = d.faa$gene.start, labels = d.faa$gene, expand = c(0, 0))+
+  scale_y_continuous(expand = c(0, 0))+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 
 ggsave(here("plots/recruit-Dalton.png"), plot = p, width = 11, height = 8.5) 
