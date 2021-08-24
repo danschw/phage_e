@@ -79,10 +79,10 @@ d2%>%
   theme_classic()+
   panel_border(color = "black", size = 1)+
   ylim(1,NA)+
-  ylab("phage E gene number")+
+  ylab("phage Cr-LKS3 gene number")+
   xlab("scafold position (bp)")+
   # scale_x_continuous(breaks = seq(0,72,2))+
-  scale_color_viridis_c()+
+  scale_color_viridis_b()+
   # theme(axis.text.x = element_text(angle = 90))
 
 ggsave(here("plots/Dalton_scaffolds.png"),  width = 8, height = 6)  
