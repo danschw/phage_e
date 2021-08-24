@@ -122,6 +122,17 @@ for (i in 2:nrow(d.faa)){
   d.faa$gene.middle[i] <- d.faa$gene.start[i]+0.5*d.faa$aa.length[i]
 }
 
+#lables for x axis
+d.faa <- 
+  d.faa %>% 
+  mutate(x.lab = str_remove(gene, "gene_")) %>% 
+  mutate(x.lab = if_else(!(row_number()%%2), x.lab, "" )) %>% 
+  mutate(rn = row_number() %% 4) %>% 
+  mutate(spacer = strrep("---", rn)) %>% 
+  mutate(spacer = if_else(!(row_number()%%2), spacer, "" )) %>% 
+  mutate(x.lab = paste0(x.lab,spacer))
+
+  
 d <- d %>% 
   # fix error on name of gene_64 for compatbility
   mutate(queryId = str_replace(queryId, "gene_64.*", "gene_64")) %>% 
@@ -147,10 +158,10 @@ p <- d %>%
   facet_wrap(~sra , strip.position = "right", ncol = 2 )+
   theme_classic(base_size = 10)+
   panel_border(color = "black", size = 1)+
-  xlab("phage E concatenated proteins (gene #)")+
+  xlab("phage Cr-LKS3 concatenated proteins (gene #)")+
   ylab("%ID (tblastn)")+
   scale_x_continuous(breaks = d.faa$gene.middle, 
-                     labels = str_remove(d.faa$gene, "gene_"), expand = c(0, 0))+
+                     labels = d.faa$x.lab, expand = c(0, 0))+
   scale_y_continuous(expand = c(0, 0), breaks = c(50,100))+
   scale_color_brewer(type = "qual", palette = "Dark2")+
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
