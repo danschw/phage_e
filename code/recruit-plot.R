@@ -105,7 +105,8 @@ faa <- read.fasta(here("data/recruitment/phageE_proteins.faa"))
 d.faa <- tibble(gene = getName(faa),
                 aa.length = getLength(faa),
                 gene.start = NA,
-                gene.end = NA)
+                gene.end = NA,
+                gene.middle = NA)
 
 
 # make a concatenated protein "genome"
@@ -113,10 +114,12 @@ d.faa <- tibble(gene = getName(faa),
 # assign first row
 d.faa$gene.start[1] <- 1
 d.faa$gene.end[1] <- d.faa$aa.length[1]
+d.faa$gene.middle[1] <- 0.5*d.faa$aa.length[1]
 
 for (i in 2:nrow(d.faa)){
   d.faa$gene.start[i] <- d.faa$gene.end[i-1]+1
   d.faa$gene.end[i] <- d.faa$gene.start[i]+d.faa$aa.length[i]-1
+  d.faa$gene.middle[i] <- d.faa$gene.start[i]+0.5*d.faa$aa.length[i]
 }
 
 d <- d %>% 
@@ -134,20 +137,46 @@ d.bg <-
   slice(which(row_number() %% 2 == 1))
 
 p <- d %>% 
+  mutate(sra = str_sub(sra, -3,-1)) %>% 
+  mutate(geo_loc_name = str_remove(geo_loc_name, "Israel: ")) %>%
+  ggplot() +
+  geom_rect(data = d.bg, aes(xmin = gene.start, xmax = gene.end,
+            ymin = 29, ymax = 100), fill = "grey90")+
+  geom_segment(aes(x=aln.start,y=percIdentity, xend = aln.end, 
+                   yend = percIdentity, color = geo_loc_name))+
+  facet_wrap(~sra , strip.position = "right", ncol = 2 )+
+  theme_classic(base_size = 10)+
+  panel_border(color = "black", size = 1)+
+  xlab("phage E concatenated proteins (gene #)")+
+  ylab("%ID (tblastn)")+
+  scale_x_continuous(breaks = d.faa$gene.middle, 
+                     labels = str_remove(d.faa$gene, "gene_"), expand = c(0, 0))+
+  scale_y_continuous(expand = c(0, 0), breaks = c(50,100))+
+  scale_color_brewer(type = "qual", palette = "Dark2")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+        legend.position = "bottom")+
+  guides(color = guide_legend(override.aes = list(size = 5)))
+
+ggsave(here("plots/recruit-IsraPonds.png"), plot = p, width = 11, height = 8.5) 
+
+p <- d %>% 
   # filter(str_detect(geo_loc_name, "Dalton")) %>% 
   filter(sra == "SRR8088692"|sra == "SRR8088693") %>%
   mutate(isolation_source = str_replace(isolation_source, "micro meter filter size", "μm")) %>%
   ggplot() +
   geom_rect(data = d.bg, aes(xmin = gene.start, xmax = gene.end,
-            ymin = 29, ymax = 100), fill = "grey90")+
+                             ymin = 29, ymax = 100), fill = "grey90")+
   geom_segment(aes(x=aln.start,y=percIdentity, xend = aln.end, yend = percIdentity), color = "blue")+
   facet_wrap(~sra + collection_date + isolation_source , strip.position = "right", ncol = 1 )+
   theme_classic()+
   panel_border(color = "black", size = 1)+
-  xlab("phage E concatenated proteins")+
+  xlab("phage E concatenated proteins (gene #)")+
   ylab("%ID (tblastn)")+
-  scale_x_continuous(breaks = d.faa$gene.start, labels = d.faa$gene, expand = c(0, 0))+
-  scale_y_continuous(expand = c(0, 0))+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-
-ggsave(here("plots/recruit-Dalton.png"), plot = p, width = 11, height = 8.5) 
+  scale_x_continuous(breaks = d.faa$gene.middle, 
+                     labels = str_remove(d.faa$gene, "gene_"), expand = c(0, 0))+
+  scale_y_continuous(expand = c(0, 0), breaks = c(50,100))+
+  scale_color_brewer(type = "qual", palette = "Dark2")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+        legend.position = "bottom")+
+  guides(color = guide_legend(override.aes = list(size = 5)))
+ggsave(here("plots/recruit-Dalton.png"), plot = p, width = 11, height = 6) 
